@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64"] # 64: editable installs (PEP 660)
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simpleposes"
+version = "0.1.0"
+description = "Link poses, each in its own reference frame, from a publisher to subscribers: no ROS, just pyzmq and numpy"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = ["pyzmq", "numpy"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+simpleposes-echo = "simpleposes.cli:main"
+
+[tool.setuptools]
+packages = ["simpleposes"]
