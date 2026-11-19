@@ -1,10 +1,9 @@
 # simpleposes
 
-Link poses, each expressed in its own reference frame, from a publisher to any number of subscribers.
+Stream link poses from a publisher to any number of subscribers.
 
-- The **publisher** is created with a fixed set of links, each with its reference frame. Every `publish()` sends the
-  poses of all links as one snapshot, stamped with the time given to it (simulation or real time).
-- The **subscriber** gets the latest snapshot (or every snapshot in order, for logging) as plain numpy arrays.
+- You create a **publisher** with a fixed set of links, each with its reference frame. Every `publish()` sends the poses of all links as one snapshot, stamped with the time given to it (simulation or real time).
+- With a **subscriber** you get the latest snapshot, containing the poses as plain numpy arrays.
 - Each message carries the link and frame names, so subscribers need no setup and survive publisher restarts.
 
 It only needs `pyzmq` and `numpy`. It does not compose frames or interpolate in time: each pose is in the reference
@@ -13,7 +12,15 @@ frame the publisher declared for it.
 ## Install
 
 ```bash
-uv pip install -e .
+uv pip install "simpleposes @ git+https://github.com/ADVRHumanoids/simpleposes.git"
+```
+
+For development, install an editable checkout, with the test dependencies:
+
+```bash
+git clone https://github.com/ADVRHumanoids/simpleposes.git
+cd simpleposes
+uv pip install -e ".[test]"
 ```
 
 ## Use from Python
